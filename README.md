@@ -1,9 +1,8 @@
 # liri-node-app
 LIRI is a Language Interpretation and Recognition Interface.
+---
 
-
-##Packages included
-
+#####Packages included
 
 * Request  
 `npm i request`
@@ -23,8 +22,11 @@ LIRI is a Language Interpretation and Recognition Interface.
 
 * Simple-node-logger
 `npm i simple-node-logger`
+---
 
-##Quick guide on how to use each command
+
+
+#####Quick guide on how to use each command
 
 
 **Spotify**
