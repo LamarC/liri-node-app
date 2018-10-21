@@ -1,26 +1,47 @@
 # liri-node-app
 LIRI is a Language Interpretation and Recognition Interface.
 
-#Packages included
-Request
-DotEnv
-Moment
-And more...
 
-#Spotify
+##Packages included
+
+
+* Request  
+`npm i request`
+
+
+* DotEnv  
+`npm i dotenv`
+
+
+* Moment  
+`npm i moment`
+
+
+* Spotify  
+`npm i spotify`
+
+
+* Simple-node-logger
+`npm i simple-node-logger`
+
+##Quick guide on how to use each command
+
+
+**Spotify**
 This will show the information about your song: 
-eg. node liri.js spotify-this-song "Kiss"
+`node liri.js spotify-this-song "Kiss"`
 
-#Omdb 
+
+**Omdb** 
 This will output your movie information:
-eg. node liri.js movie-this "Her"
+`node liri.js movie-this "Her"`
 
-#Bands In Town
+
+**Bands In Town**
 This will search the Bands in Town Artist Events:
+`node concert-this "Major+Lazer"`
 
-eg. node concert-this "Major+Lazer"
 
-#Random Info
+**Random Info**
 Gets text inside file an does what it say:
-
-eg. node liri.js do-what-it-says
+`node liri.js do-what-it-says`
