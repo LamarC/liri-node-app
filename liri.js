@@ -1,14 +1,15 @@
 // Read and set environment variables
 require("dotenv").config();
 
-//Requiered modules
+//Keys
+const keys = require("./keys,js");
 
 //Omdb
 const request = require("request");
 
 //Spotify
-const Spotify = require('node-spotfy-api');
-const spotify = new Spotify(keys.spotify);
+ const spotify = require("node-spotify-api");
+ const Spotify = new Spotify(keys.spotify);
 
 //To read and update files
 const fs = require("fs");
@@ -17,19 +18,14 @@ const fs = require("fs");
 const moment = require("moment");
 
 //liri commands
-let command = process.argv[2];
-let query = process.arv[3];
+const command = process.argv[2];
+const query = process.arv[3];
 
 //Omdb 
 
-function findMovie(movie) {
-	// Append the command to the log file
-	fs.appendFile('./log.txt', 'User Command: node liri.js movie-this ' + movie + '\n\n', (err) => {
-		if (err) throw err;
-	});
-
+function movieThis(movie) {
 	// Give default value to movie
-	var search;
+	const search;
 	if (movie === '') {
 		search = 'Cruel Intentions';
 	} else {
@@ -40,12 +36,12 @@ function findMovie(movie) {
 	search = search.split(' ').join('+');
 
 	// Construct the query string
-	var queryStr = 'http://www.omdbapi.com/?t=' + search + '&plot=full&tomatoes=true';
+	const queryStr = `http://www.omdbapi.com/??apikey=${keys.omdb.id}&t=${title}&plot=short`;
 
 	// Send the request to OMDB
 	request(queryStr, function (error, response, body) {
 		if ( error || (response.statusCode !== 200) ) {
-			var errorStr1 = 'ERROR: Retrieving OMDB entry -- ' + error;
+			var errorStr1 = 'ERROR: OMDB entry -- ' + error;
 
 			// Append the error string to the log file
 			fs.appendFile('./log.txt', errorStr1, (err) => {
@@ -54,9 +50,9 @@ function findMovie(movie) {
 			});
 			return;
 		} else {
-			var data = JSON.parse(body);
+			const data = JSON.parse(body);
 			if (!data.Title && !data.Released && !data.imdbRating) {
-				var errorStr2 = 'ERROR: No movie info retrieved, please check the spelling of the movie name!';
+				let errorStr2 = 'ERROR: No movie info retrieved, please check the spelling of the movie name!';
 
 				// Append the error string to the log file
 				fs.appendFile('./log.txt', errorStr2, (err) => {
@@ -66,7 +62,7 @@ function findMovie(movie) {
 				return;
 			} else {
 		    	// Pretty print the movie information
-		    	var outputStr = '------------------------\n' + 
+		    	let outputStr = '------------------------\n' + 
 								'Movie Information:\n' + 
 								'------------------------\n\n' +
 								'Title: ' + data.Title + '\n' + 
@@ -87,7 +83,6 @@ function findMovie(movie) {
 		}
 	});
 }
-
 
 
 
