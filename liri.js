@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 //Keys
-const keys = require("./keys,js");
+const keys = require("./keys");
 
 //Omdb
 const request = require("request");
@@ -25,7 +25,8 @@ const query = process.arv[3];
 
 function movieThis(movie) {
 	// Give default value to movie
-	const search;
+	
+	const search = "";
 	if (movie === '') {
 		search = 'Cruel Intentions';
 	} else {
